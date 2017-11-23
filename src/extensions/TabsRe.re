@@ -1,4 +1,5 @@
 /* https://developer.chrome.com/extensions/tabs */
+/* Common types */
 [@bs.deriving {jsConverter: newType}]
 type tabStatus = [ [@bs.as "loading"] | `Loading [@bs.as "completed"] | `Completed];
 
@@ -47,10 +48,8 @@ type tab = {
   "sessionId": Js.nullable(string)
 };
 
+/* chrome.tabs.query */
 type queryInfo;
-
-[@bs.scope ("chrome", "tabs")] [@bs.val]
-external query : (queryInfo, array(tab) => unit) => unit = "";
 
 [@bs.obj]
 external mkQueryInfo :
@@ -72,3 +71,32 @@ external mkQueryInfo :
   ) =>
   queryInfo =
   "";
+
+[@bs.scope ("chrome", "tabs")] [@bs.val] external query : (queryInfo, array(tab) => unit) => unit =
+  "";
+
+/* chrome.tabs.executeScript */
+type scriptDetails;
+
+[@bs.obj]
+external mkScriptDetails :
+  (
+    ~code: string=?,
+    ~file: string=?,
+    ~allFrames: Js.boolean=?,
+    ~frameId: int=?,
+    ~matchAboutBlank: Js.boolean=?,
+    ~runAt: Js.boolean=?,
+    unit
+  ) =>
+  scriptDetails =
+  "";
+
+[@bs.scope ("chrome", "tabs")] [@bs.val]
+external executeScript : (scriptDetails, Js.nullable(array(Js.t('a))) => unit) => unit =
+  "";
+
+[@bs.scope ("chrome", "tabs")] [@bs.val]
+external executeScriptWithTabId :
+  (int, scriptDetails, Js.nullable(array(Js.t('a))) => unit) => unit =
+  "executeScript";
