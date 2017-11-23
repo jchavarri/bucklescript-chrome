@@ -2,8 +2,13 @@
   "name": "bucklescript-chrome",
   "version": "0.1.0",
   "sources": [
-    "src",
-    "examples"
+    {
+      "dir": "src",
+      "subdirs": true
+    },
+    {
+      "dir":"examples"
+    }
   ],
   "bsc-flags": ["-bs-super-errors"],
   "bs-dependencies" : [

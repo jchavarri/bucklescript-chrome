@@ -1,4 +1,4 @@
-open Chrome.Identity;
+open Chrome.Apps.Identity;
 
 let testGetAuthToken = () =>
   getAuthToken(

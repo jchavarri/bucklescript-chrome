@@ -1,9 +1,5 @@
 /* chrome.identity.getAuthToken */
-class type _accountInfo =
-  [@bs]
-  {
-    pub id: string
-  };
+type _accountInfo = {. id: string};
 
 type accountInfo = Js.t(_accountInfo);
 

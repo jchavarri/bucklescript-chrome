@@ -1,1 +1,2 @@
-module Identity = IdentityRe;
+module Apps = AppsRe;
+module Extensions = ExtensionsRe;
