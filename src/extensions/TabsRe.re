@@ -92,11 +92,18 @@ external mkScriptDetails :
   scriptDetails =
   "";
 
-[@bs.scope ("chrome", "tabs")] [@bs.val]
-external executeScript : (scriptDetails, Js.nullable(array(Js.t('a))) => unit) => unit =
+[@bs.scope ("chrome", "tabs")] [@bs.val] external executeScript : (scriptDetails => unit) => unit =
   "";
 
 [@bs.scope ("chrome", "tabs")] [@bs.val]
 external executeScriptWithTabId :
   (int, scriptDetails, Js.nullable(array(Js.t('a))) => unit) => unit =
+  "executeScript";
+
+[@bs.scope ("chrome", "tabs")] [@bs.val]
+external executeScriptWithCallback : (scriptDetails, array(Js.t('a)) => unit) => unit =
+  "executeScript";
+
+[@bs.scope ("chrome", "tabs")] [@bs.val]
+external executeScriptWithTabIdAndCallback : (int, scriptDetails, array(Js.t('a)) => unit) => unit =
   "executeScript";
