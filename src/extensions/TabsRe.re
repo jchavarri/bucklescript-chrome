@@ -92,8 +92,7 @@ external mkScriptDetails :
   scriptDetails =
   "";
 
-[@bs.scope ("chrome", "tabs")] [@bs.val] external executeScript : (scriptDetails => unit) => unit =
-  "";
+[@bs.scope ("chrome", "tabs")] [@bs.val] external executeScript : scriptDetails => unit = "";
 
 [@bs.scope ("chrome", "tabs")] [@bs.val]
 external executeScriptWithTabId :
