@@ -8,7 +8,7 @@ type accountInfo = Js.t(_accountInfo);
 class type _getAuthTokenOptions =
   [@bs]
   {
-    pub interactive: Js.boolean;
+    pub interactive: bool;
     pub scopes: list(string);
     pub account: accountInfo
   };
@@ -17,7 +17,7 @@ type getAuthTokenOptions = Js.t(_getAuthTokenOptions);
 
 [@bs.obj]
 external mkAuthOptions :
-  (~interactive: Js.boolean=?, ~scopes: list(string)=?, ~account: accountInfo=?, unit) =>
+  (~interactive: bool=?, ~scopes: list(string)=?, ~account: accountInfo=?, unit) =>
   getAuthTokenOptions =
   "";
 
@@ -59,13 +59,13 @@ class type _webAuthFlowOptions =
   [@bs]
   {
     pub url: string;
-    pub interactive: Js.boolean
+    pub interactive: bool
   };
 
 type webAuthFlowOptions = Js.t(_webAuthFlowOptions);
 
 [@bs.obj]
-external mkWebFlowOptions : (~url: string, ~interactive: Js.boolean=?, unit) => webAuthFlowOptions =
+external mkWebFlowOptions : (~url: string, ~interactive: bool=?, unit) => webAuthFlowOptions =
   "";
 
 [@bs.scope ("chrome", "identity")] [@bs.val]
@@ -79,6 +79,6 @@ external launchWebAuthFlow : (webAuthFlowOptions, (Js.null(string), unit) => 'a)
 /* chrome.identity.onSignInChanged.addListener */
 module OnSignInChanged = {
   [@bs.scope ("chrome", "identity", "onSignInChanged")] [@bs.val]
-  external addListener : ((accountInfo, Js.boolean) => 'a) => unit =
+  external addListener : ((accountInfo, bool) => 'a) => unit =
     "addListener";
 };
