@@ -3,7 +3,7 @@ open Chrome.Apps.Identity;
 let testGetAuthToken = () =>
   getAuthToken(
     mkAuthOptions(
-      ~interactive=Js.true_,
+      ~interactive=true,
       (),
       ~scopes=["scope"],
       ~account=mkAccountInfo(~id="id", ())
@@ -19,13 +19,13 @@ let testLaunchWebAuthFlow =
   launchWebAuthFlow(
     mkWebFlowOptions(~url="https://example.com", ()),
     (mResponseURL, ()) =>
-      switch (Js.Null.to_opt(mResponseURL)) {
+      switch (Js.Null.toOption(mResponseURL)) {
       | Some(responseUrl) => Js.log(responseUrl)
       | None => Js.log("No url returned!")
       }
   );
 
-let testGetRedirectURL = getRedirectURL(Js.Null.from_opt(Some("path")));
+let testGetRedirectURL = getRedirectURL(Js.Null.fromOption(Some("path")));
 
 let testOnSignInChanged =
   OnSignInChanged.addListener(

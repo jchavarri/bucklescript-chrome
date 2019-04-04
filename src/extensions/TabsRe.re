@@ -54,14 +54,14 @@ type queryInfo;
 [@bs.obj]
 external mkQueryInfo :
   (
-    ~active: Js.boolean=?,
-    ~pinned: Js.boolean=?,
-    ~audible: Js.boolean=?,
-    ~muted: Js.boolean=?,
-    ~highlighted: Js.boolean=?,
-    ~discarded: Js.boolean=?,
-    ~autoDiscardable: Js.boolean=?,
-    ~currentWindow: Js.boolean=?,
+    ~active: bool=?,
+    ~pinned: bool=?,
+    ~audible: bool=?,
+    ~muted: bool=?,
+    ~highlighted: bool=?,
+    ~discarded: bool=?,
+    ~autoDiscardable: bool=?,
+    ~currentWindow: bool=?,
     ~status: abs_tabStatus=?,
     ~url: array(string)=?, /* TODO: Support passing a string in `url` as well */
     ~windowId: int=?,
@@ -83,10 +83,10 @@ external mkScriptDetails :
   (
     ~code: string=?,
     ~file: string=?,
-    ~allFrames: Js.boolean=?,
+    ~allFrames: bool=?,
     ~frameId: int=?,
-    ~matchAboutBlank: Js.boolean=?,
-    ~runAt: Js.boolean=?,
+    ~matchAboutBlank: bool=?,
+    ~runAt: bool=?,
     unit
   ) =>
   scriptDetails =
